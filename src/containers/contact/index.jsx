@@ -6,7 +6,7 @@ import "./styles.scss";
 import emailjs from "@emailjs/browser";
 
 const Contact = () => {
-  const formRef = useRef(); // Changed from `form` to `formRef`
+  const formRef = useRef();
   const [submitting, setSubmitting] = useState(false);
 
   const sendEmail = async (e) => {
@@ -14,12 +14,12 @@ const Contact = () => {
     setSubmitting(true);
 
     try {
-      await emailjs.sendForm("service_2zzely2", "template_uko8ltg", formRef.current, { // Changed from `form` to `formRef`
+      await emailjs.sendForm("service_2zzely2", "template_uko8ltg", formRef.current, { 
         publicKey: "Rcm6Ek-oma_LcijNB",
       });
       console.log("SUCCESS!");
 
-      // Clear form fields after successful submission
+      
       formRef.current.reset();
     } catch (error) {
       console.error("FAILED...", error.text);
