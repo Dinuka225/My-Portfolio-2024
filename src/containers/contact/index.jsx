@@ -79,7 +79,7 @@ const Contact = () => {
               <div>
                 <input
                   required
-                  type="text"
+                  type="email"
                   className="inputEmail"
                   name="from_email"
                 />
