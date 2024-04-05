@@ -10,27 +10,27 @@ import "./styles.scss";
 const portfolioData = [
   {
     id: 2,
-    name: "Ecommerce",
+    name: "Big-Boss-Gym-web",
     image: image1,
-    link: "",
+    link: "https://github.com/dinukasaranga/Big-Boss-Fit-Club.git",
   },
   {
     id: 3,
-    name: "GYM",
+    name: "Travel web page",
     image: image2,
-    link: "",
+    link: "https://github.com/dinukasaranga/Travel-Page.git",
   },
   {
     id: 4,
     name: "Burgur shop",
     image: image3,
-    link: "",
+    link: "https://github.com/dinukasaranga/Burger-shop-demo-web.git",
   },
   {
     id: 5,
     name: "Portfolio",
     image: image4,
-    link: "",
+    link: "https://github.com/dinukasaranga/My-Portfolio-2024.git",
   },
 ];
 
@@ -60,6 +60,10 @@ const Portfolio = () => {
   function handleHover(index) {
     sethoverValue(index);
   }
+
+  const handleClick = (link) => {
+    window.location.href = link;
+  };
 
   const filteredItems =
     filteredvalue === 1
@@ -103,7 +107,7 @@ const Portfolio = () => {
                   {item.id === hoverValue && (
                     <div>
                       <p>{item.name}</p>
-                      <button>Visit</button>
+                      <button onClick={() => handleClick(item.link)}>Visit</button>
                     </div>
                   )}
                 </div>

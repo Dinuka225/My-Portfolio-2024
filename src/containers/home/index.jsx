@@ -6,16 +6,13 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaWhatsappSquare } from "react-icons/fa";
+import { FaGithubSquare } from "react-icons/fa";
 
 const Home = () => {
   const navigate = useNavigate();
 
   const handleNavigateToContactMePage = () => {
     navigate("/contact");
-  };
-
-  const handleViewMyCv = () => {
-    navigate("/cv");
   };
 
   return (
@@ -40,9 +37,14 @@ const Home = () => {
       >
         <div className="home_contact-me">
           <button onClick={handleNavigateToContactMePage}>Contact Me</button>
-          <button onClick={handleViewMyCv}>View My CV</button>
+          <a href="https://drive.google.com/file/d/1KembBPSbXN7Yzfj4OTx9NxRYrttXlCbx/view" download>
+          <button>View My CV</button>
+          </a>
         </div>
         <div className="socialMedia_links">
+          <a href="https://github.com/dinukasaranga" target="_blank" rel="noreferrer">
+            <FaGithubSquare/>
+          </a>
           <a href="https://web.facebook.com/dinuka.saranga.357/" target="_blank" rel="noreferrer">
             <FaFacebookSquare />
           </a>

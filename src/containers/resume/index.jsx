@@ -1,3 +1,4 @@
+/*
 import React from "react";
 import { BsInfoCircleFill } from "react-icons/bs";
 import PageHeaderContent from "../../components/pageHeaderContent";
@@ -90,3 +91,5 @@ const Resume = () => {
 };
 
 export default Resume;
+
+*/

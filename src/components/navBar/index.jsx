@@ -18,10 +18,6 @@ const data = [
     to: "/skills",
   },
   {
-    label: "RESUME",
-    to: "/resume",
-  },
-  {
     label: "PORTFOLIO",
     to: "/portfolio",
   },
@@ -38,6 +34,10 @@ const Navbar = () => {
     setToggleIcon(!toggleIcon);
   }
 
+  function handleMenuClick() {
+    setToggleIcon(false);
+  }
+
   return (
     <div>
       <nav className="navbar">
@@ -49,7 +49,9 @@ const Navbar = () => {
         <ul className={`navbar_container_menu ${toggleIcon ? "active" : ""}`}>
           {data.map((item, key) => (
             <li key={key} className="navbar_container_menu_item">
-              <Link className="navbar_container_menu_item_link" to={item.to}>
+              <Link className="navbar_container_menu_item_link" to={item.to}
+                onClick={handleMenuClick}
+              >
                 {item.label}
               </Link>
             </li>
