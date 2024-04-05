@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { RiContactsFill } from "react-icons/ri";
 import PageHeaderContent from "../../components/pageHeaderContent";
 import { Animate } from "react-simple-animate";
 import "./styles.scss";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
+  const formRef = useRef(); // Changed from `form` to `formRef`
+  const [submitting, setSubmitting] = useState(false);
+
+  const sendEmail = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+
+    try {
+      await emailjs.sendForm("service_2zzely2", "template_uko8ltg", formRef.current, { // Changed from `form` to `formRef`
+        publicKey: "Rcm6Ek-oma_LcijNB",
+      });
+      console.log("SUCCESS!");
+
+      // Clear form fields after successful submission
+      formRef.current.reset();
+    } catch (error) {
+      console.error("FAILED...", error.text);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="contact">
       <PageHeaderContent
@@ -36,10 +59,19 @@ const Contact = () => {
             transform: "translateX(0px)",
           }}
         >
-          <div className="contact_content_form">
+          <form
+            className="contact_content_form"
+            ref={formRef}
+            onSubmit={sendEmail}
+          >
             <div className="contact_content_form_controlWrapper">
               <div>
-                <input required type="text" className="inputName" name="name" />
+                <input
+                  required
+                  type="text"
+                  className="inputName"
+                  name="from_name"
+                />
                 <label htmlFor="name" className="nameLabel">
                   Name
                 </label>
@@ -49,7 +81,7 @@ const Contact = () => {
                   required
                   type="text"
                   className="inputEmail"
-                  name="email"
+                  name="from_email"
                 />
                 <label htmlFor="email" className="emailLabel">
                   Email
@@ -58,18 +90,22 @@ const Contact = () => {
               <div>
                 <textarea
                   required
-                  type="text"
                   className="inputDescription"
-                  name="description"
+                  name="message"
                   rows={5}
                 />
                 <label htmlFor="description" className="descriptionLabel">
-                  Description
+                  Message
                 </label>
               </div>
             </div>
-            <button>Submit</button>
-          </div>
+            <input
+              className="button"
+              type="submit"
+              value={submitting ? "Submitting..." : "Submit"}
+              disabled={submitting}
+            />
+          </form>
         </Animate>
       </div>
     </section>
