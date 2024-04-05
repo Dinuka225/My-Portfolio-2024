@@ -13,13 +13,31 @@ const Contact = () => {
     e.preventDefault();
     setSubmitting(true);
 
-    try {
-      await emailjs.sendForm("service_2zzely2", "template_uko8ltg", formRef.current, { 
-        publicKey: "Rcm6Ek-oma_LcijNB",
-      });
-      console.log("SUCCESS!");
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-      
+    if (!formRef.current || !formRef.current.from_email) {
+      console.error("Email field not found");
+      setSubmitting(false);
+      return;
+    }
+
+    const email = formRef.current.from_email.value.trim();
+    if (!emailPattern.test(email)) {
+      console.error("Please enter a valid email address");
+      setSubmitting(false);
+      return;
+    }
+
+    try {
+      await emailjs.sendForm(
+        "service_2zzely2",
+        "template_uko8ltg",
+        formRef.current,
+        {
+          publicKey: "Rcm6Ek-oma_LcijNB",
+        }
+      );
+      console.log("SUCCESS!");
       formRef.current.reset();
     } catch (error) {
       console.error("FAILED...", error.text);
