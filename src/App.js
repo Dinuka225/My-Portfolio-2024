@@ -1,39 +1,22 @@
 import "./App.scss";
-import { Routes, Route, useLocation } from "react-router-dom";
-import Home from "./containers/home";
-import About from "./containers/about";
-import Resume from "./containers/resume";
-import Skills from "./containers/skills";
-import Portfolio from "./containers/portfolio";
-import Contact from "./containers/contact";
+import { useLocation } from "react-router-dom";
 import Navbar from "./components/navBar";
 import ParticlesComponent from "./components/utils/particles";
-
+import AnimatedRoutes from "./components/AnimatedRoutes/";
 function App() {
   const location = useLocation();
-  console.log(location);
 
   const renderParticlesJsInHomePage = location.pathname === "/";
 
   return (
     <div className="App">
-      {/**particle js */}
-
       {renderParticlesJsInHomePage && <ParticlesComponent id="particles" />}
-
-      {/**navbar */}
-      <Navbar />
-
-      {/**main page content */}
-      <div className="App_main-page-content">
-        <Routes>
-          <Route index path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/portfolio" element={<Portfolio />}/>
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </div>
+      
+        <Navbar />
+        <div className="App_main-page-content">
+        <AnimatedRoutes/>
+        </div>
+      
     </div>
   );
 }
