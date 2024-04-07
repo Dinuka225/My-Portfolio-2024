@@ -1,38 +1,10 @@
 import React, { useState } from "react";
 import { GrProjects } from "react-icons/gr";
 import PageHeaderContent from "../../components/pageHeaderContent";
-import image1 from "../../images/image1.jpg";
-import image2 from "../../images/image2.jpg";
-import image3 from "../../images/image3.jpg";
-import image4 from "../../images/image4.jpg";
 import "./styles.scss";
+import { motion } from "framer-motion";
+import portfolioData from "../../components/utils/portfolioData";
 
-const portfolioData = [
-  {
-    id: 2,
-    name: "Big-Boss-Gym-web",
-    image: image1,
-    link: "https://github.com/dinukasaranga/Big-Boss-Fit-Club.git",
-  },
-  {
-    id: 3,
-    name: "Travel web page",
-    image: image2,
-    link: "https://github.com/dinukasaranga/Travel-Page.git",
-  },
-  {
-    id: 4,
-    name: "Burgur shop",
-    image: image3,
-    link: "https://github.com/dinukasaranga/Burger-shop-demo-web.git",
-  },
-  {
-    id: 5,
-    name: "Portfolio",
-    image: image4,
-    link: "https://github.com/dinukasaranga/My-Portfolio-2024.git",
-  },
-];
 
 const filterData = [
   {
@@ -72,7 +44,13 @@ const Portfolio = () => {
 
   return (
     <div>
-      <section id="portfolio" className="portfolio">
+      <motion.section
+        id="portfolio"
+        className="portfolio"
+        initial={{ width: 0 }}
+        animate={{ width: "100%" }}
+        exit={{ x: Window.innerWidth, transition: { duration: 0.5 } }}
+      >
         <PageHeaderContent
           headerText="My Portfolio"
           icon={<GrProjects size={40} />}
@@ -107,7 +85,9 @@ const Portfolio = () => {
                   {item.id === hoverValue && (
                     <div>
                       <p>{item.name}</p>
-                      <button onClick={() => handleClick(item.link)}>Visit</button>
+                      <button onClick={() => handleClick(item.link)}>
+                        Visit
+                      </button>
                     </div>
                   )}
                 </div>
@@ -115,7 +95,7 @@ const Portfolio = () => {
             ))}
           </div>
         </dir>
-      </section>
+      </motion.section>
     </div>
   );
 };

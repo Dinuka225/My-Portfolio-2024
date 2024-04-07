@@ -1,7 +1,8 @@
 .wrapper {
   display: flex;
   align-items: center;
-  padding: 5px;
+  padding: 10px;
+  margin: 10px;
   border-block-end: 1px dashed var(--yellow-theme-main-color);
 
   h2 {

@@ -4,6 +4,7 @@ import PageHeaderContent from "../../components/pageHeaderContent";
 import { Animate } from "react-simple-animate";
 import "./styles.scss";
 import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const formRef = useRef();
@@ -47,7 +48,13 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="contact">
+    <motion.section
+      id="contact"
+      className="contact"
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      exit={{ x: Window.innerWidth, transition: { duration: 0.5 } }}
+    >
       <PageHeaderContent
         headerText="My Contact"
         icon={<RiContactsFill size={40} />}
@@ -55,10 +62,10 @@ const Contact = () => {
       <div className="contact_content">
         <Animate
           play
-          duration={1}
-          delay={0}
+          duration={0.5}
+          delay={0.5}
           start={{
-            transform: "translateX(-200px)",
+            transform: "translateX(-900px)",
           }}
           end={{
             transform: "translateX(0px)",
@@ -68,10 +75,10 @@ const Contact = () => {
         </Animate>
         <Animate
           play
-          duration={1}
-          delay={0}
+          duration={0.5}
+          delay={0.5}
           start={{
-            transform: "translateX(200px)",
+            transform: "translateX(1800px)",
           }}
           end={{
             transform: "translateX(0px)",
@@ -126,7 +133,7 @@ const Contact = () => {
           </form>
         </Animate>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

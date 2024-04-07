@@ -3,37 +3,21 @@ import { BsInfoCircleFill } from "react-icons/bs";
 import PageHeaderContent from "../../components/pageHeaderContent";
 import { Animate } from "react-simple-animate";
 import "./styles.scss";
-import { FaDev, FaDatabase } from "react-icons/fa";
-import { DiAndroid, DiApple } from "react-icons/di";
-
-const personalDeatils = [
-  {
-    label: "Name :",
-    value: "Dinuka Saranga",
-  },
-  {
-    label: "Age :",
-    value: "25",
-  },
-  {
-    label: "Email :",
-    value: "Dinukasaranga25@gmail.com",
-  },
-  {
-    label: "Mobile Number :",
-    value: "+94 778 068 839",
-  },
-  {
-    label: "Region :",
-    value: "Sri Lanka",
-  },
-];
+import { FaReact, FaDatabase, FaAngular, FaPhp } from "react-icons/fa";
+import { DiApple } from "react-icons/di";
+import { motion } from "framer-motion";
+import personalDeatils from "../../components/utils/personalDetails";
+import jobSummery from "../../components/utils/aboutSummery";
 
 const About = () => {
-  const jobSummery = `As a dedicated undergraduate at UCSC, I specialized in frontend development with a growing proficiency in backend technologies. With hands-on experience in HTML5, CSS3, JavaScript, ReactJS, Node.js, and Express.js,I poised to create engaging digital experiences. Explore my portfolio to see my projects and witness my passion for pushing the boundaries of web development.`;
-  
   return (
-    <section id="about" className="about">
+    <motion.section
+      id="about"
+      className="about"
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      exit={{ x: Window.innerWidth, transition: { duration: 0.5 } }}
+    >
       <PageHeaderContent
         headerText="About Me"
         icon={<BsInfoCircleFill size={40} />}
@@ -42,10 +26,10 @@ const About = () => {
         <div className="about_content_personalWrapper">
           <Animate
             play
-            duration={1}
-            delay={0}
+            duration={0.5}
+            delay={0.5}
             start={{
-              transform: "translateX(-900px)",
+              transform: "translateX(-800px)",
             }}
             end={{
               transform: "translatex(0px)",
@@ -57,10 +41,10 @@ const About = () => {
 
           <Animate
             play
-            duration={1}
-            delay={0}
+            duration={0.5}
+            delay={0.5}
             start={{
-              transform: "translateX(500px)",
+              transform: "translateX(1800px)",
             }}
             end={{
               transform: "translatex(0px)",
@@ -82,10 +66,10 @@ const About = () => {
         <div className="about_content_servicesWrapper">
           <Animate
             play
-            duration={1}
-            delay={0}
+            duration={0.5}
+            delay={0.5}
             start={{
-              transform: "translateX(600px)",
+              transform: "translateX(1200px)",
             }}
             end={{
               transform: "translatex(0px)",
@@ -93,22 +77,22 @@ const About = () => {
           >
             <div className="about_content_servicesWrapper_innerContent">
               <div>
-                <FaDev size={60} color="var(--yellow-theme-main-color)" />
+                <FaReact size={60} color="var(--yellow-theme-main-color)" />
               </div>
               <div>
-                <DiAndroid size={60} color="var(--yellow-theme-main-color)" />
+                <FaAngular size={60} color="var(--yellow-theme-main-color)" />
+              </div>
+              <div>
+                <FaPhp size={70} color="var(--yellow-theme-main-color)" />
               </div>
               <div>
                 <FaDatabase size={60} color="var(--yellow-theme-main-color)" />
-              </div>
-              <div>
-                <DiApple size={60} color="var(--yellow-theme-main-color)" />
               </div>
             </div>
           </Animate>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

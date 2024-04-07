@@ -5,23 +5,27 @@ import { skillsData } from "../../components/utils/skills";
 import { Animate, AnimateKeyframes } from "react-simple-animate";
 import { Line } from "rc-progress";
 import "./styles.scss";
+import { motion } from "framer-motion";
 
 const Skills = () => {
   return (
-    <section id="skills" className="skills">
-      <PageHeaderContent
-        headerText="My Skills"
-        icon={<GiSkills size={40} />}
-      />
+    <motion.section
+      id="skills"
+      className="skills"
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      exit={{ x: Window.innerWidth, transition: { duration: 0.5 } }}
+    >
+      <PageHeaderContent headerText="My Skills" icon={<GiSkills size={40} />} />
       <div className="skills_contentWrapper">
         {skillsData.map((item, i) => (
           <div key={i} className="skills_contentWrapper_inner_content">
             <Animate
               play
-              duration={1}
-              delay={0.2}
+              duration={0.5}
+              delay={0.5}
               start={{
-                transform: "translateX(-300px)",
+                transform: "translateX(-1800px)",
               }}
               end={{
                 transform: "translateX(0px)",
@@ -30,6 +34,7 @@ const Skills = () => {
               <h3 className="skills_contentWrapper_inner_content_category-name">
                 {item.label}
               </h3>
+
               <div className="skills_contentWrapper_inner_content_progrssbar-container">
                 {item.data.map((skillItem, j) => (
                   <AnimateKeyframes
@@ -56,7 +61,7 @@ const Skills = () => {
           </div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 
