@@ -3,12 +3,13 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   flex-direction: column;
 
   &_text-wrapper {
     display: flex;
     justify-content: center;
+    margin: 20px;
 
     h1 {
       color: var(--yellow-theme-main-color);
