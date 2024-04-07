@@ -10,6 +10,8 @@ import { AnimatePresence } from "framer-motion";
 const AnimatedRoutes = () => {
   const location = useLocation();
   return (
+    /*akdjldjlsjd */
+    
     <AnimatePresence>
       <Routes location={location} key={location.pathname}>
         <Route index path="/" element={<Home />} />
