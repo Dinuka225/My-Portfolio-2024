@@ -25,7 +25,7 @@ const Home = () => {
         <h1>
           Hello,I'm Dinuka Saranga.
           <br />
-         updated
+         Trainee Full Stack Developer
         </h1>
       </div>
       <Animate
